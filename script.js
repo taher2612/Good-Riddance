@@ -7,14 +7,33 @@ const selectedElement = e => {
         else{
             e.target.classList.remove('addRed');
         }
-    }, 1500)
+    }, 500)
 }
 
-const scanDocument = (element) => {
+const scanDocument = (element, select) => {
+    if(select){
         element.forEach(elem => { 
-        elem.addEventListener('click', selectedElement);
-    });
+            elem.addEventListener('click', selectedElement);
+        });
+    }else{
+        element.forEach(elem => { 
+            elem.removeEventListener('click', selectedElement);
+        });
+    }
 }
 
+scanDocument(document.body.childNodes, true);
 
-scanDocument(document.body.childNodes);
+const deselect = () => {
+    console.log("Here");
+    setTimeout(() => {
+        console.log("ALso here");        
+        if(confirm("Should I end the deletion of containers?")){
+            scanDocument(document.body.childNodes, false);
+        }else{
+            closeDeselction();
+        }
+    }, 6000);
+}
+
+deselect();
