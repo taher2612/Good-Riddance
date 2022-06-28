@@ -1,13 +1,20 @@
-// alert('This works')
-const paras = document.querySelectorAll('*');
-
-console.log(paras);
-paras.forEach(para => {
-if(window.getComputedStyle(para).getPropertyValue('position').toLowerCase() === 'fixed' || window.getComputedStyle(para).getPropertyValue('position').toLowerCase() === 'sticky'){
-    para.classList.add('addRed');
+const selectedElement = e => {
+    e.target.classList.add('addRed');
+    setTimeout(() => {
+        if(confirm("Do you want to delete this container ?")){
+            e.target.remove();
+        }
+        else{
+            e.target.classList.remove('addRed');
+        }
+    }, 1500)
 }
-})
+
+const scanDocument = (element) => {
+        element.forEach(elem => { 
+        elem.addEventListener('click', selectedElement);
+    });
+}
 
 
-// window.getComputedStyle(para).getPropertyValue('position').toLowerCase() === 'fixed';
-// use the above comparison to check a particular property
+scanDocument(document.body.childNodes);
