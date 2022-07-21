@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 2em;
+        }
+        div.container{
+            display: flex;
+            gap: 1em;
+        }
+        button{
+            border-radius: 10px;
+            white-space: nowrap;
+            padding: .5em;
+            font-weight: bold;
+        }
+        .enabled{
+            color: black;
+            background-color: rgb(5, 203, 65);
+            border: 4px outset rgb(64, 152, 64);
+        }
+        .disabled{
+            color: white;
+            background-color: brown;
+            border: 4px outset rgb(197, 102, 102);
+        }
+        .enabled:active{
+            color: whitesmoke;
+            background-color: rgb(21, 106, 21);
+            border: 4px inset rgb(64, 152, 64);
+        }
+        .disabled:active{
+            color: whitesmoke;
+            background-color: rgb(95, 16, 16);    
+            border: 4px inset rgb(197, 102, 102);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button type="button" class="enabled" id="enable">Enable Select</button>
+        <button type="button" class="disabled" id="disable">disabled Select</button>
+    </div>
+    <script src="sketch.js"></script>
+</body>
+</html>

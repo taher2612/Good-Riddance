@@ -1,3 +1,11 @@
+chrome.runtime.onMessage.addListener(reciever);// for recieving messages
+
+function reciever(request, sender, sendResponse){
+    setTimeout(() => {
+        scanDocument(document.body.childNodes, request.select);
+    }, 500);
+}
+
 const selectedElement = e => {
     e.target.classList.add('addRed');
     setTimeout(() => {
@@ -7,7 +15,7 @@ const selectedElement = e => {
         else{
             e.target.classList.remove('addRed');
         }
-    }, 500)
+    }, 100)
 }
 
 const scanDocument = (element, select) => {
@@ -21,19 +29,3 @@ const scanDocument = (element, select) => {
         });
     }
 }
-
-scanDocument(document.body.childNodes, true);
-
-const deselect = () => {
-    console.log("Here");
-    setTimeout(() => {
-        console.log("ALso here");        
-        if(confirm("Should I end the deletion of containers?")){
-            scanDocument(document.body.childNodes, false);
-        }else{
-            closeDeselction();
-        }
-    }, 6000);
-}
-
-deselect();
