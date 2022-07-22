@@ -9,10 +9,8 @@ enableSelect.addEventListener('click', (e) => {
         const message ={
             select : true
         }
-        chrome.tabs.sendMessage(activeTab.id, message, response => {
-            para.textContent = response;
-        });
-    });
+        chrome.tabs.sendMessage(activeTab.id, message);
+    })
 });
 
 disableSelect.addEventListener('click', (e) => {
@@ -23,8 +21,6 @@ disableSelect.addEventListener('click', (e) => {
         const message ={
             select : false
         }
-        chrome.tabs.sendMessage(activeTab.id, message, response => {
-            para.textContent = response;
-        });
+        chrome.tabs.sendMessage(activeTab.id, message);
     });
 });
