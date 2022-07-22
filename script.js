@@ -8,15 +8,17 @@ function reciever(request, sender, sendResponse){
 }
 
 const selectedElement = e => {
-    e.target.classList.add('addRed');
-    setTimeout(() => {
-        if(confirm("Do you want to delete this container ?")){
-            e.target.remove();
-        }
-        else{
-            e.target.classList.remove('addRed');
-        }
-    }, 100)
+    if(e.altKey){
+        e.target.classList.add('addRed');
+        setTimeout(() => {
+            if(confirm("Do you want to delete this container ?")){
+                e.target.remove();
+            }
+            else{
+                e.target.classList.remove('addRed');
+            }
+        }, 100)
+    }
 }
 
 const scanDocument = (element, select) => {
