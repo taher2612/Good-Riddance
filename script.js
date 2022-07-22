@@ -2,6 +2,7 @@ chrome.runtime.onMessage.addListener(reciever);// for recieving messages
 
 function reciever(request, sender, sendResponse){
     setTimeout(() => {
+        document.body.classList.add("scroll")
         scanDocument(document.body.childNodes, request.select);
     }, 500);
 }

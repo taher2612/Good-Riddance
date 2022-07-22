@@ -1,4 +1,7 @@
 .addRed{
-    background-color: red !important;
-    border: 5px solid green !important;
+    border: 4px dashed #c31;
+}
+
+.scroll{
+    overflow-y: scroll !important;
 }
