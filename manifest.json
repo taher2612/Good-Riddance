@@ -6,6 +6,9 @@
         "default_popup" : "sketch/popup.html",
         "default_icon" : "icon.png"
     },
+    "icons":{
+        "128" : "icon.png"
+    },
     "background" : {
         "scripts" : ["background.js"]
     },

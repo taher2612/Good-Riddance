@@ -1,6 +1,6 @@
 chrome.runtime.onMessage.addListener(reciever);// for recieving messages
 function reciever(request, sender, sendResponse){
-    document.body.classList.add("scroll");
+    // document.body.classList.add("scroll");
     scanDocument(document.body.childNodes, request.select);
 }
 
@@ -17,30 +17,46 @@ document.body.addEventListener('keyup', (e) => {
 
 const selectedElement = e => {
     if(e.altKey && e.ctrlKey){
-        if(e.target.classList.contains('addRed')){//removing selections from a specific element
-            e.target.classList.remove('addRed');
+        if(e.target.classList.contains('toDelete')){//removing selections from a specific element
+            e.target.classList.remove('toDelete');
             const remIndex = elementsToRemove.indexOf(e.target);
             elementsToRemove.splice(remIndex, 1); 
         }
         else{
-            e.target.classList.add('addRed');
+            e.target.classList.add('toDelete');
+            e.target.classList.remove('highlightDelete');
             elementsToRemove.push(e.target);
         }
     }
+}
+
+const highlight = e => {
+    if(e.altKey && e.ctrlKey){
+        e.target.classList.add('highlightDelete');
+    }
+}
+
+const removeHighlight = e => {
+    e.target.classList.remove('highlightDelete');
 }
 
 const scanDocument = (elements, select) => {
     if(select){
         elements.forEach(elem => { 
             elem.addEventListener('click', selectedElement);
+            elem.addEventListener('mouseover', highlight)
+            elem.addEventListener('mouseout', removeHighlight)
+
         });
     }else{
         elementsToRemove.forEach(elem => {//deselecting all elements 
-            elem.classList.remove('addRed');
+            elem.classList.remove('toDelete');
         });
-        elementsToRemove.splice(0,);//will remove all elements
+        elementsToRemove.splice(0,);//will remove all elements from the array
         elements.forEach(elem => { 
             elem.removeEventListener('click', selectedElement);
+            elem.removeEventListener('mouseover', highlight);
+            elem.removeEventListener('mouseout', removeHighlight)
         });
     }
 }
