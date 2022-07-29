@@ -5,57 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        body{
-            padding: 2em;
-            /* background-image: linear-gradient(white, pink); */
-        }
-        div.container{
-            display: flex;
-            gap: 1em;
-        }
-        button{
-            border-radius: 10px;
-            white-space: nowrap;
-            padding: .5em;
-            font-weight: bold;
-        }
-        .enabled{
-            color: black;
-            background-color: rgb(5, 203, 65);
-            border: 4px outset rgb(64, 152, 64);
-        }
-        .disabled{
-            color: white;
-            background-color: brown;
-            border: 4px outset rgb(197, 102, 102);
-        }
-        .enabled:active{
-            color: whitesmoke;
-            background-color: rgb(21, 106, 21);
-            border: 4px inset rgb(64, 152, 64);
-        }
-        .disabled:active{
-            color: whitesmoke;
-            background-color: rgb(95, 16, 16);    
-            border: 4px inset rgb(197, 102, 102);
-        }
-        .enabled:disabled{
-            color: whitesmoke;
-            background-color: rgb(16, 80, 16);
-            border: 4px inset rgb(56, 128, 56);
-        }
-        .disabled:disabled{
-            color: whitesmoke;
-            background-color: rgb(84, 14, 14);    
-            border: 4px inset rgb(143, 77, 77);
-        }
-    </style>
+    <link rel="stylesheet" href="popupStyles.css">
 </head>
 <body>
+    <h1 class="title">Good Riddance</h1>
     <div class="container">
         <button type="button" class="enabled" id="enable">Enable Select</button>
-        <button type="button" class="disabled" id="disable">disabled Select</button>
+        <button type="button" class="disabled" id="disable">Disable Select</button>
+    </div>
+    <br>
+    <div class="manual">
+        <div id="heading">
+            Help
+            <span id="indicate" class="rotate">+</span>
+        </div>
+        <ul class="contracted expand">
+            <li class="items">Service is enabled by default.</li>
+            <li class="items">ctrl + alt + mouseMove : highlights the content.</li>
+            <li class="items">ctrl + alt + mouseClick : to select the content(also to deselect).</li>
+            <li class="items">delete | backspace : to remove selected elements.</li>
+            <li class="items">Click on "Disable Select", to disable the service</li>
+            <li class="items">Click on "Enable Select", to re-enable the service</li>
+            <li class="items">On page reload, every removed content will be back at its place.</li>
+            <li class="items">Can be used to remove anything that blocks the overall view port.</li>
+        </ul>
     </div>
     <script src="sketch.js"></script>
 </body>

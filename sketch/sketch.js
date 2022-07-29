@@ -24,3 +24,17 @@ disableSelect.addEventListener('click', (e) => {
         chrome.tabs.sendMessage(activeTab.id, message);
     });
 });
+
+// popup event handler :
+const manual = document.querySelector("#heading");
+const instructions = document.querySelector(".contracted");
+const indicate = document.querySelector('#indicate');
+
+manual.addEventListener('click', (e) => {
+    instructions.classList.toggle('expand');
+    if(instructions.classList.contains('expand')){
+        indicate.classList.add('rotate');
+    }else{
+        indicate.classList.remove('rotate');
+    }
+})

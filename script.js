@@ -1,6 +1,8 @@
 chrome.runtime.onMessage.addListener(reciever);// for recieving messages
 function reciever(request, sender, sendResponse){
-    // document.body.classList.add("scroll");
+    if(window.getComputedStyle(document.body).getPropertyValue('overflow').toLowerCase() === 'hidden'){
+        document.body.classList.add('scroll');
+    }
     scanDocument(document.body.childNodes, request.select);
 }
 
@@ -31,7 +33,7 @@ const selectedElement = e => {
 }
 
 const highlight = e => {
-    if(e.altKey && e.ctrlKey){
+    if((e.altKey && e.ctrlKey) && !e.target.classList.contains('toDelete')){
         e.target.classList.add('highlightDelete');
     }
 }
