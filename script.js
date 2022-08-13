@@ -1,6 +1,6 @@
 chrome.runtime.onMessage.addListener(reciever);// for recieving messages
 function reciever(request, sender, sendResponse){
-    if(window.getComputedStyle(document.body).getPropertyValue('overflow').toLowerCase() === 'hidden'){
+    if(window.getComputedStyle(document.body).getPropertyValue('overflow').toLowerCase() === 'hidden'){ //if the body element's overflow is set to hidden, then set to scroll
         document.body.classList.add('scroll');
     }
     scanDocument(document.body.childNodes, request.select);
@@ -8,7 +8,7 @@ function reciever(request, sender, sendResponse){
 
 const elementsToRemove = [];
 document.body.addEventListener('keyup', (e) => {
-    if(e.keyCode === 8 || e.keyCode === 46){
+    if(e.keyCode === 8 || e.keyCode === 46){ // 8 for 'backspace' , 46 for 'delete'
         elementsToRemove.forEach(elem => {
             elem.remove();
         });
@@ -63,5 +63,5 @@ const scanDocument = (elements, select) => {
     }
 }
 
-// on default, enable select:
+// by default, enable select:
 reciever({select : true});
