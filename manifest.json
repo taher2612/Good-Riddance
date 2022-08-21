@@ -3,7 +3,6 @@
     "name" : "Good Riddance",
     "version" : "0.0.1",
     "description": "Increase productivity through speedy disposal of unwanted content, with just few clicks.",
-    "permissions" : ["activeTab", "tabs"],
     "action" : {
         "default_popup" : "sketch/popup.html",
         "default_icon" : "icon.png",
