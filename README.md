@@ -1,2 +1,2 @@
-# CookieEater
-This is a browser extension project, for the easy removal of a cookie.
+# Good Riddance
+Increase productivity through speedy disposal of unwanted content, with just few clicks.
