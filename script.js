@@ -17,8 +17,17 @@ document.body.addEventListener('keyup', (e) => {
 
 });
 
+document.body.addEventListener('keydown', (e) => { // the new cmd+alt+r re-enable
+    if (e.altKey) {
+        if ((e.ctrlKey || e.metaKey) && (e.key === "Dead" || e.keyCode === 82)) { // it is surprising, but the event key for 'r' is "Dead"
+            e.preventDefault();
+            scanDocument(document.body.childNodes, true);            
+        }
+    }
+});
+
 const selectedElement = e => {
-    if(e.altKey && e.ctrlKey){
+    if(e.altKey && (e.ctrlKey || e.metaKey)){
         if(e.target.classList.contains('toDelete')){//removing selections from a specific element
             e.target.classList.remove('toDelete');
             const remIndex = elementsToRemove.indexOf(e.target);
@@ -33,7 +42,7 @@ const selectedElement = e => {
 }
 
 const highlight = e => {
-    if((e.altKey && e.ctrlKey) && !e.target.classList.contains('toDelete')){
+    if((e.altKey && (e.ctrlKey || e.metaKey)) && !e.target.classList.contains('toDelete')){
         e.target.classList.add('highlightDelete');
     }
 }
@@ -64,4 +73,6 @@ const scanDocument = (elements, select) => {
 }
 
 // by default, enable select:
-reciever({select : true});
+setTimeout(() => {
+    reciever({select : true});
+}, 786);
